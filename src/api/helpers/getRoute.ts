@@ -10,7 +10,7 @@ import { UniswapRouter } from 'services/uniswap'
 const USER_WALLET_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 interface ApiInput {
-  inputAmount: number
+  inputAmount: string
   inputToken: Token
   outputToken: Token
   slippageTolerance: Percent
@@ -24,7 +24,7 @@ async function getRoute(input: ApiInput): Promise<SwapRoute> {
     slippageTolerance,
   } = input
 
-  const parsedAmount = parseUnits(`${inputAmount}`, inputToken.decimals)
+  const parsedAmount = parseUnits(inputAmount, inputToken.decimals)
 
   const route = await UniswapRouter.route(
     CurrencyAmount.fromRawAmount(inputToken, parsedAmount.toString()),

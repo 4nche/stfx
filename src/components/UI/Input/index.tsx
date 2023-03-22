@@ -22,7 +22,6 @@ const TokenLogo = styled.div`
   position: absolute;
   right: 20px;
   top: calc(50% - 12.5px);
-
 `
 
 const StyledInput = styled.input`

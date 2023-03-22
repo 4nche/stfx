@@ -3,9 +3,9 @@ import { Token } from '@uniswap/sdk-core'
 import { UniswapProvider } from 'services/uniswap'
 import config from 'config';
 
-export async function getTokenData(tokenName: string): Promise<Token | null> {
+export async function getTokenData(tokenSymbol: string): Promise<Token | null> {
 
-  const tokenInfo = config.tokens.find(token => token.symbol === tokenName)
+  const tokenInfo = config.tokens.find(token => token.symbol === tokenSymbol)
 
   if (!tokenInfo) {
     return null

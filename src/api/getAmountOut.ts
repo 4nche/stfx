@@ -1,4 +1,4 @@
-import getRoute from 'helpers/getRoute'
+import getRoute from './helpers/getRoute'
 
 async function getAmountOut(input: Parameters<typeof getRoute>[0]) {
   const route = await getRoute(input)

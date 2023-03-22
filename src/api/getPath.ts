@@ -1,4 +1,4 @@
-import getRoute from 'helpers/getRoute'
+import getRoute from './helpers/getRoute'
 
 async function getPath(input: Parameters<typeof getRoute>[0]): Promise<string[]> {
   const route = await getRoute(input)

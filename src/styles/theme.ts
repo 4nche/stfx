@@ -35,6 +35,7 @@ export const devices = {
 
 const theme = {
   fontSize: {
+    xxs: '0.8rem',
     xs: '1rem',
     sm: '1.2rem',
     default: '1.4rem',

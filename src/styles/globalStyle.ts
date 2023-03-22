@@ -4,20 +4,15 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   * {
     color: ${props => props.theme.colors.foreground100};
+    font-family: "Roboto Mono", source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+    box-sizing: border-box;
   }
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+    overscroll-behavior-y: none;
   }
 
   /* Works for Chrome, Safari, Edge, Opera */

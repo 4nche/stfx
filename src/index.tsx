@@ -4,6 +4,7 @@ import App from './App';
 import GlobalStyle from 'styles/globalStyle'
 import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
+import "@fontsource/roboto-mono";
 
 
 const root = ReactDOM.createRoot(

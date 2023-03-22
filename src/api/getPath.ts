@@ -1,27 +1,14 @@
+import { getPathFromRoute } from 'api/helpers/selectors'
 import getRoute from './helpers/getRoute'
 
+/**
+ * as per the requirements of the assignment, this pure function can be called to retrieve
+ * the optimal swap path of token A -> token B
+ */
 async function getPath(input: Parameters<typeof getRoute>[0]): Promise<string[]> {
   const route = await getRoute(input)
 
-  if (!(route.route || []).length) {
-    return []
-  }
-
-  // first index of route.route is a v3 route, otherwise (I assume) a v2 route
-  // due to time constraints this will be something I assume to be right
-  const tokenPath: string[] = route.route[0].tokenPath.map((token) => {
-    if (token.symbol) {
-      return token.symbol
-    }
-
-    if (token.name) {
-      return token.name
-    }
-
-    return token.address
-  })
-
-  return tokenPath
+  return getPathFromRoute(route)
 }
 
 export default getPath

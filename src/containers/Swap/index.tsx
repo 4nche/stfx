@@ -1,3 +1,4 @@
+import { Percent } from '@uniswap/sdk-core'
 import Input from 'components/UI/Input'
 import React from 'react'
 import styled from 'styled-components'

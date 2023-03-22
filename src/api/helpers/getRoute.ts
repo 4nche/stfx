@@ -9,14 +9,14 @@ import { UniswapRouter } from 'services/uniswap'
  */
 const USER_WALLET_ADDRESS = "0x0000000000000000000000000000000000000000";
 
-interface GetRouteInput {
+interface ApiInput {
   inputAmount: number
   inputToken: Token
   outputToken: Token
   slippageTolerance: Percent
 }
 
-async function getRoute(input: GetRouteInput): Promise<SwapRoute> {
+async function getRoute(input: ApiInput): Promise<SwapRoute> {
   const {
     inputAmount,
     inputToken,

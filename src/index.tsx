@@ -5,6 +5,8 @@ import GlobalStyle from 'styles/globalStyle'
 import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 import "@fontsource/roboto-mono";
+import { Provider } from 'react-redux';
+import { store } from 'state/store';
 
 
 const root = ReactDOM.createRoot(
@@ -13,9 +15,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );

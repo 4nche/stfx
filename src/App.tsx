@@ -1,4 +1,4 @@
-import Swap from 'components/Swap';
+import Swap from 'containers/Swap';
 import PageHeader from 'components/UI/PageHeader';
 import React from 'react';
 import styled from 'styled-components';

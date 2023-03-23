@@ -29,7 +29,7 @@ const StyledInput = styled.input`
   outline: 0;
   -webkit-appearance: none !important;
   margin: 0;
-  font-size: ${props => props.theme.fontSize.xl};
+  font-size: ${props => props.theme.fontSize.lg};
   padding-top: ${props => props.theme.spacing[10]};
   padding-left: ${props => props.theme.spacing[15]};
   padding-bottom: ${props => `calc(${props.theme.spacing[10]} + 2px)`};
@@ -37,34 +37,38 @@ const StyledInput = styled.input`
   background-color: ${props => props.theme.colors.background800};
   transition: background-color 0.5s ${props => props.theme.animation.default};
 
-  &:hover, &:active {
-    background-color: ${props => props.theme.colors.background700};
+  &:hover:enabled,
+  &:active:enabled,
+  &:focus:enabled {
+    background-color: ${props => props.theme.colors.green50};
+  }
+
+  &:disabled {
+    color: ${props => props.theme.colors.foreground100};
   }
 
 `
 
-interface InputProps {
-  value: string
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   onChange?: (newValue: string) => void
   tokenSymbol: string
 }
 
-type HTMLInputProps = Omit<React.HTMLProps<HTMLInputElement>, 'ref' | 'as' | 'onChange' | 'value'>
-
 function Input({
+  type,
   value,
   onChange,
   tokenSymbol,
   ...inputProps
-}: InputProps & HTMLInputProps) {
+}: InputProps) {
   const tokenInfo = config.tokens.find((token) => token.symbol === tokenSymbol)
 
   return (
     <InputContainer>
       <StyledInput
         value={value}
-        type="number"
-        placeholder='0'
+        type={type}
+        placeholder=''
         onChange={(ev) => onChange && onChange(ev.target.value)}
         {...inputProps}
       />

@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
-    color: ${props => props.theme.colors.foreground100};
+    color: ${props => props.theme.colors.foreground800};
     font-family: "Roboto Mono", source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
     box-sizing: border-box;
   }

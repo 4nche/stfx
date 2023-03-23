@@ -10,7 +10,10 @@
   },
   "scripts": {
     "start:web": "yarn workspace @stfxanche/web start",
-    "lint": "yarn workspaces run lint"
+    "lint": "yarn workspaces run lint",
+    "web": "yarn workspace @stfxanche/web",
+    "uniswap": "yarn workspace @stfxanche/uniswap",
+    "uniswap:cli": "yarn workspace @stfxanche/uniswap cli"
   },
   "dependencies": {
   },

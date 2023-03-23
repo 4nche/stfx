@@ -1,4 +1,4 @@
-import { getQuoteFromRoute } from 'api/helpers/selectors'
+import { getQuoteFromRoute } from 'api/helpers/routeSelectors'
 import getRoute from './helpers/getRoute'
 
 /**

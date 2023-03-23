@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { SwapRoute } from '@uniswap/smart-order-router'
 import getRoute from 'api/helpers/getRoute'
-import { getPathFromRoute, getQuoteFromRoute } from 'api/helpers/selectors'
+import { getPathFromRoute, getQuoteFromRoute } from 'api/helpers/routeSelectors'
 
 
 /**

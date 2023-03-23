@@ -1,7 +1,13 @@
 import { SwapRoute } from "@uniswap/smart-order-router";
 
 export function getQuoteFromRoute(route: SwapRoute): string {
-  return route.quote.toExact()
+  /**
+   * this will be problematic when we will use this application for more coins, for example
+   * when we would be able to swap coins for SHIB, the decimalPlaces should increase
+   *
+   * for now I choose to keep it like this due to time constraints.
+   */
+  return route.quote.toFixed(5)
 }
 
 export function getPathFromRoute(route: SwapRoute): string[] {

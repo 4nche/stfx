@@ -1,4 +1,4 @@
-import { getPathFromRoute } from 'api/helpers/selectors'
+import { getPathFromRoute } from 'api/helpers/routeSelectors'
 import getRoute from './helpers/getRoute'
 
 /**

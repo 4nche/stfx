@@ -1,37 +1,31 @@
 import { Percent, Token, TradeType } from "@uniswap/sdk-core"
-import { CurrencyAmount, SwapRoute, SwapType } from "@uniswap/smart-order-router"
+import { AlphaRouter, CurrencyAmount, SwapRoute, SwapType } from "@uniswap/smart-order-router"
 import { parseUnits } from "ethers"
-import { UniswapRouter } from 'services/uniswap'
 
-/**
- * this should be the address which we could get from MetaMask connection (window.ethereum)
- * but since its out of scope I will ignore this for now
- */
-const USER_WALLET_ADDRESS = "0x0000000000000000000000000000000000000000";
-
-interface ApiInput {
+interface GetRouteInput {
   inputAmount: string
   inputToken: Token
   outputToken: Token
   slippageTolerance: Percent
+  router: AlphaRouter
 }
 
-async function getRoute(input: ApiInput): Promise<SwapRoute> {
+async function getRoute(input: GetRouteInput): Promise<SwapRoute> {
   const {
     inputAmount,
     inputToken,
     outputToken,
     slippageTolerance,
+    router,
   } = input
 
   const parsedAmount = parseUnits(inputAmount, inputToken.decimals)
 
-  const route = await UniswapRouter.route(
+  const route = await router.route(
     CurrencyAmount.fromRawAmount(inputToken, parsedAmount.toString()),
     outputToken,
     TradeType.EXACT_INPUT,
     {
-      recipient: USER_WALLET_ADDRESS,
       slippageTolerance,
       type: SwapType.UNIVERSAL_ROUTER,
       deadlineOrPreviousBlockhash: Math.floor(Date.now() / 1000 + 1800),

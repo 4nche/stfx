@@ -1,5 +1,5 @@
-import { getPathFromRoute } from 'api/helpers/routeSelectors'
-import getRoute from './helpers/getRoute'
+import { getPathFromRoute } from './routeSelectors'
+import getRoute from './getRoute'
 
 /**
  * as per the requirements of the assignment, this pure function can be called to retrieve

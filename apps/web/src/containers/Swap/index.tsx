@@ -1,5 +1,5 @@
 import { Percent, Token } from '@uniswap/sdk-core'
-import { getTokenData } from 'api/helpers/getTokenData'
+import { getTokenData } from '@stfxanche/uniswap'
 import Spinner from 'components/Spinner'
 import SwapPath from 'components/SwapPath'
 import Button from 'components/UI/Button'
@@ -9,6 +9,8 @@ import React from 'react'
 import { fetchUniswapRoute } from 'state/uniswap'
 import styled from 'styled-components'
 import { devices } from 'styles/theme'
+import { UniswapProvider, UniswapRouter } from 'services/uniswap'
+import config from 'config'
 
 const Container = styled.div`
   width: 95%;
@@ -74,9 +76,19 @@ function Swap() {
   // but this setup easily allows for dynamic switching of these components and fetching other tokens
   React.useEffect(() => {
     const fetchTokens = async () => {
+      // we know this data exists, so for simplicity sake add non-null assertions
+      const usdcTokenInfo = config.tokens.find(t => t.symbol === 'USDC')!
+      const compTokenInfo = config.tokens.find(t => t.symbol === 'COMP')!
+
       const [USDC, COMP] = await Promise.all([
-        getTokenData('USDC'),
-        getTokenData('COMP')
+        getTokenData({
+          provider: UniswapProvider,
+          token: usdcTokenInfo,
+        }),
+        getTokenData({
+          provider: UniswapProvider,
+          token: compTokenInfo
+        })
       ])
 
       // for simplicity sake I use non-null assertions here
@@ -97,7 +109,8 @@ function Swap() {
       inputAmount: amount,
       inputToken,
       outputToken,
-      slippageTolerance: new Percent(2, 100)
+      slippageTolerance: new Percent(2, 100),
+      router: UniswapRouter,
     }))
   }
 
